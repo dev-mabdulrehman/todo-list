@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# Todo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and intuitive to-do list application built with **React**, **TypeScript**, and **Tailwind CSS**. This project provides essential task management features with a clean, responsive UI.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
 
-### `yarn start`
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `yarn test`
+- **Task Management**: Add, edit, and delete tasks.
+- **Task Completion Tracking**: Mark tasks as completed or pending.
+- **Responsive Design**: Optimized for desktop and mobile views.
+- **Data Persistence**: Local storage to retain tasks after page reload.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `yarn build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React**: For building dynamic user interfaces.
+- **TypeScript**: For static typing, enhancing code quality.
+- **Tailwind CSS**: For efficient, responsive styling.
+- **LocalStorage API**: For data persistence.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `yarn eject`
+To get a local copy up and running, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/dev-mabdulrehman/todo-list.git
+   ```
+   
+2. **Install dependencies**:
+   ```bash
+   # Using npm
+   npm install
+   
+   # OR using yarn
+   yarn install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Install Tailwind CSS**
+    ```bash
+    # Using npm
+    npm install -D tailwindcss
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    # Using yarn
+    yarn add -D tailwindcss
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    npx tailwindcss init
 
-## Learn More
+4. **Configure Tailwind CSS: Update tailwind.config.js to include your content paths.**
+    ```bash
+    module.exports = {
+        content: ["./src/**/*.{js,jsx,ts,tsx}"],
+        theme: {
+            extend: {},
+        },
+        plugins: [],
+    }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. **Add Tailwind CSS to your CSS file:**
+    ```bash
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. **Run the application**:
+   ```bash
+   # Using npm
+   npm run dev
+   
+   # OR using yarn
+   yarn dev
+   ```
+
+The application will be accessible at \`http://localhost:3000\`.
+
+---
+
+## Contact
+
+Developer: Muhammad Abdul Rehman  
+Email: [dev.mabdulrehman@gmail.com](mailto:dev.mabdulrehman@gmail.com)
