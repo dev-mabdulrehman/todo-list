@@ -9,7 +9,6 @@ A simple and intuitive to-do list application built with **React**, **TypeScript
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
 ---
@@ -79,10 +78,10 @@ To get a local copy up and running, follow these steps:
 6. **Run the application**:
    ```bash
    # Using npm
-   npm run dev
+   npm start
    
    # OR using yarn
-   yarn dev
+   yarn start
    ```
 
 The application will be accessible at \`http://localhost:3000\`.
