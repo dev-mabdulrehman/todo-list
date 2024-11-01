@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
-const CustomCheckButton = () => {
-    const [isChecked, setChecked] = useState(false);
+type Props = {
+    id: number,
+    isChecked: boolean,
+    handleCheckChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const CustomCheckButton = ({ id, isChecked, handleCheckChange }: Props) => {
     return (
         <label role='checkbox' className={`w-6 h-6 cursor-pointer rounded-full flex items-center justify-center border-2 border-black/20 ${isChecked ? 'bg-green-200' : ''}`}>
             {isChecked &&
@@ -9,7 +14,7 @@ const CustomCheckButton = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
             }
-            <input type="checkbox" onChange={() => setChecked(prevState => !prevState)} className='hidden' />
+            <input type="checkbox" data-id={id} onChange={handleCheckChange} className='hidden' />
         </label>
     )
 }
