@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 
 type Props = {
     id: number,
@@ -14,7 +14,7 @@ const CustomCheckButton = ({ id, isChecked, handleCheckChange }: Props) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
             }
-            <input type="checkbox" data-id={id} onChange={handleCheckChange} className='hidden' />
+            <input type="checkbox" aria-checked={isChecked === true ? "true" : "false"} data-id={id} onChange={handleCheckChange} className='hidden' />
         </label>
     )
 }

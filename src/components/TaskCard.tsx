@@ -13,11 +13,11 @@ const TaskCard = ({ task, handleCheckChange, handleDeleteTask, handleEditTask }:
 
     const onDeleteButtonClick: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
         handleDeleteTask(task.id as number)
-    }, [task.id]);
+    }, [task.id, handleDeleteTask]);
 
     const onEditButtonClick: MouseEventHandler<HTMLButtonElement> = useCallback(() => {
         handleEditTask(task)
-    }, [task]);
+    }, [task, handleEditTask]);
 
     return (
         <section className='flex items-center gap-2 bg-white p-4 rounded-md shadow-sm border border-black/10'>

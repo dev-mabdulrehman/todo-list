@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { Task } from "../App";
 import { useTodoListContext } from "../context/TodoListContext";
 
@@ -7,12 +7,12 @@ const WriteTaskForm = () => {
     const { setTaskList, task, setTask } = useTodoListContext();
 
     const onTaskAdded = (task: Task) => {
-        setTaskList((prevState) => ([...prevState, task]))
+        setTaskList((prevState) => ([task, ...prevState]))
     }
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        if (task.task != "") {
+        if (task.task !== "") {
             if (task.id !== "") {
                 setTaskList(prevState => {
                     const taskIdx = prevState.findIndex(ps => ps.id === task.id);

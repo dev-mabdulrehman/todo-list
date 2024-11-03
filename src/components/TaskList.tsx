@@ -14,24 +14,24 @@ const TaskList = ({ heading, taskList }: Props) => {
     const handleTaskStatusChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const id = (e.target.getAttribute("data-id") as unknown as number);
         setTaskList(prevState => {
-            const taskIdx = prevState.findIndex(ps => ps.id == id);
+            const taskIdx = prevState.findIndex(ps => ps.id as number === id as number);
             if (taskIdx !== -1) {
                 prevState[taskIdx].isCompleted = !prevState[taskIdx].isCompleted;
             }
             return [...prevState];
         });
-    }, []);
+    }, [setTaskList]);
 
     const handleDeleteTask = useCallback((id: number) => {
         setTaskList(prevState => {
             prevState = prevState.filter(ps => ps.id !== id);
             return [...prevState];
         });
-    }, [taskList]);
+    }, [setTaskList]);
 
     const handleEditTask = useCallback((task: Task) => {
         setTask(task);
-    }, [taskList]);
+    }, [setTask]);
 
     return (
         <div className='p-4'>
