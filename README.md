@@ -91,7 +91,7 @@ The application will be accessible at \`http://localhost:3000\`.
 
 ## Project Image
 
-![Project Image](https://github.com/dev-mabdulrehman/todo-list/blob/main/assets/images/TodoProjectImage.png)
+![Project Image](https://github.com/dev-mabdulrehman/todo-list/blob/main/src/assets/images/TodoProjectImage.png)
 
 ## Contact
 
