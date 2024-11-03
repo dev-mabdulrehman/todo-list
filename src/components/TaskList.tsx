@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useCallback } from 'react'
 import TaskCard from './TaskCard'
 import { Task } from '../App'
 import { useTodoListContext } from '../context/TodoListContext'
@@ -11,7 +11,7 @@ type Props = {
 const TaskList = ({ heading, taskList }: Props) => {
     const { setTaskList } = useTodoListContext();
 
-    const handleTaskStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleTaskStatusChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const id = (e.target.getAttribute("data-id") as unknown as number);
         setTaskList(prevState => {
             const taskIdx = prevState.findIndex(ps => ps.id == id);
@@ -19,8 +19,15 @@ const TaskList = ({ heading, taskList }: Props) => {
                 prevState[taskIdx].isCompleted = !prevState[taskIdx].isCompleted;
             }
             return [...prevState];
-        })
-    }
+        });
+    }, []);
+
+    const handleDeleteTask = useCallback((id: number) => {
+        setTaskList(prevState => {
+            prevState = prevState.filter(ps => ps.id !== id);
+            return [...prevState];
+        });
+    }, [taskList]);
 
     return (
         <div className='p-4'>
@@ -30,7 +37,7 @@ const TaskList = ({ heading, taskList }: Props) => {
             {taskList.length === 0 ? <h5 className='text-center text-gray-400 font-medium'> No tasks yet.</h5> :
                 <section className='flex flex-col gap-2'>
                     {taskList.map((task) => (
-                        <TaskCard handleCheckChange={handleTaskStatusChange} task={task} key={task.id} />
+                        <TaskCard handleCheckChange={handleTaskStatusChange} handleDeleteTask={handleDeleteTask} task={task} key={task.id} />
                     ))}
                 </section>
             }
