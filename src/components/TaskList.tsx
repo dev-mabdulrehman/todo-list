@@ -14,7 +14,7 @@ const TaskList = ({ heading, taskList }: Props) => {
     const handleTaskStatusChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const id = (e.target.getAttribute("data-id") as unknown as number);
         setTaskList(prevState => {
-            const taskIdx = prevState.findIndex(ps => ps.id as number === id as number);
+            const taskIdx = prevState.findIndex(ps => Number.parseInt(ps.id.toString()) === Number.parseInt(id.toString()));
             if (taskIdx !== -1) {
                 prevState[taskIdx].isCompleted = !prevState[taskIdx].isCompleted;
             }
