@@ -15,7 +15,7 @@ function App() {
 
   return (
     <TodoListProvider value={{ taskList, setTaskList, task, setTask }}>
-      <div className="w-full max-w-96 bg-slate-50 h-screen mx-auto">
+      <div className="w-full h-screen mx-auto">
         <WriteTaskForm />
         <hr />
         <TaskList heading="To do" taskList={taskList.filter(task => !task.isCompleted)} />
