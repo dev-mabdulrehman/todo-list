@@ -9,6 +9,7 @@ A simple and intuitive to-do list application built with **React**, **TypeScript
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
+- [Project Image](#project-image)
 - [Contact](#contact)
 
 ---
@@ -87,6 +88,10 @@ To get a local copy up and running, follow these steps:
 The application will be accessible at \`http://localhost:3000\`.
 
 ---
+
+## Project Image
+
+![Project Image](https://github.com/dev-mabdulrehman/todo-list/blob/main/assets/images/TodoProjectImage.png)
 
 ## Contact
 
