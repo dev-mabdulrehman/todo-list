@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
+import { TodoListProvider } from "./context/TodoListContext";
 
 export type Task = {
   task: string,
@@ -11,31 +12,15 @@ export type Task = {
 function App() {
   const [taskList, setTaskList] = useState<Task[]>([]);
 
-  const onTaskAdded = (task: Task) => {
-    setTaskList((prevState) => ([...prevState, task]))
-  }
-
-  const handleTaskStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const id = (e.target.getAttribute("data-id") as unknown as number);
-    setTaskList(prevState => {
-      const taskIdx = prevState.findIndex(ps => ps.id == id);
-      if (taskIdx !== -1) {
-        console.log(taskIdx)
-        console.log(prevState[taskIdx].isCompleted)
-        prevState[taskIdx].isCompleted = !prevState[taskIdx].isCompleted;
-      }
-      console.log(taskList)
-      return [...prevState];
-    })
-  }
-
   return (
-    <div className="w-full max-w-96 bg-slate-50 h-screen mx-auto">
-      <AddTaskForm onTaskAdded={onTaskAdded} />
-      <hr />
-      <TaskList heading="To do" handleCheckChange={handleTaskStatusChange} taskList={taskList.filter(task => !task.isCompleted)} />
-      <TaskList heading="Completed" handleCheckChange={handleTaskStatusChange} taskList={taskList.filter(task => !task.isCompleted)} />
-    </div>
+    <TodoListProvider value={{ taskList, setTaskList }}>
+      <div className="w-full max-w-96 bg-slate-50 h-screen mx-auto">
+        <AddTaskForm />
+        <hr />
+        <TaskList heading="To do" taskList={taskList.filter(task => !task.isCompleted)} />
+        <TaskList heading="Completed" taskList={taskList.filter(task => task.isCompleted)} />
+      </div>
+    </TodoListProvider>
   );
 }
 

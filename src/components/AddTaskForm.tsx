@@ -1,12 +1,15 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Task } from "../App";
+import { useTodoListContext } from "../context/TodoListContext";
 
-type Props = {
-    onTaskAdded: (task: Task) => void
-}
 
-const AddTaskForm = ({ onTaskAdded }: Props) => {
+const AddTaskForm = () => {
+    const { setTaskList } = useTodoListContext();
     const [task, setTask] = useState<string>("");
+
+    const onTaskAdded = (task: Task) => {
+        setTaskList((prevState) => ([...prevState, task]))
+    }
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();

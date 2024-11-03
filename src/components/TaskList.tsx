@@ -1,14 +1,27 @@
-import React, { ChangeEvent } from 'react'
+import { ChangeEvent } from 'react'
 import TaskCard from './TaskCard'
 import { Task } from '../App'
+import { useTodoListContext } from '../context/TodoListContext'
 
 type Props = {
     heading: string,
-    taskList: Task[],
-    handleCheckChange: (e: ChangeEvent<HTMLInputElement>) => void
+    taskList: Task[]
 }
 
-const TaskList = ({ heading, taskList, handleCheckChange }: Props) => {
+const TaskList = ({ heading, taskList }: Props) => {
+    const { setTaskList } = useTodoListContext();
+
+    const handleTaskStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const id = (e.target.getAttribute("data-id") as unknown as number);
+        setTaskList(prevState => {
+            const taskIdx = prevState.findIndex(ps => ps.id == id);
+            if (taskIdx !== -1) {
+                prevState[taskIdx].isCompleted = !prevState[taskIdx].isCompleted;
+            }
+            return [...prevState];
+        })
+    }
+
     return (
         <div className='p-4'>
             <h2 className='text-md uppercase font-bold mb-2'>
@@ -17,7 +30,7 @@ const TaskList = ({ heading, taskList, handleCheckChange }: Props) => {
             {taskList.length === 0 ? <h5 className='text-center text-gray-400 font-medium'> No tasks yet.</h5> :
                 <section className='flex flex-col gap-2'>
                     {taskList.map((task) => (
-                        <TaskCard handleCheckChange={handleCheckChange} task={task} key={task.id} />
+                        <TaskCard handleCheckChange={handleTaskStatusChange} task={task} key={task.id} />
                     ))}
                 </section>
             }
