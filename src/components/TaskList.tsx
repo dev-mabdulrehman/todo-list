@@ -9,7 +9,7 @@ type Props = {
 }
 
 const TaskList = ({ heading, taskList }: Props) => {
-    const { setTaskList } = useTodoListContext();
+    const { setTaskList, setTask } = useTodoListContext();
 
     const handleTaskStatusChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const id = (e.target.getAttribute("data-id") as unknown as number);
@@ -29,6 +29,10 @@ const TaskList = ({ heading, taskList }: Props) => {
         });
     }, [taskList]);
 
+    const handleEditTask = useCallback((task: Task) => {
+        setTask(task);
+    }, [taskList]);
+
     return (
         <div className='p-4'>
             <h2 className='text-md uppercase font-bold mb-2'>
@@ -37,7 +41,7 @@ const TaskList = ({ heading, taskList }: Props) => {
             {taskList.length === 0 ? <h5 className='text-center text-gray-400 font-medium'> No tasks yet.</h5> :
                 <section className='flex flex-col gap-2'>
                     {taskList.map((task) => (
-                        <TaskCard handleCheckChange={handleTaskStatusChange} handleDeleteTask={handleDeleteTask} task={task} key={task.id} />
+                        <TaskCard handleCheckChange={handleTaskStatusChange} handleDeleteTask={handleDeleteTask} handleEditTask={handleEditTask} task={task} key={task.id} />
                     ))}
                 </section>
             }

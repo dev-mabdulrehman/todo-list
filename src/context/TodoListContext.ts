@@ -4,6 +4,8 @@ import { Task } from '../App';
 type Context = {
 	taskList: Task[];
 	setTaskList: React.Dispatch<SetStateAction<Task[]>>;
+	task: Task;
+	setTask: React.Dispatch<SetStateAction<Task>>;
 };
 
 const TodoListContext = createContext<Context | undefined>(undefined);
